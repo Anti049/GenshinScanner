@@ -16,7 +16,9 @@ namespace GenshinScanner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ScannerForm());
+#pragma warning disable CS0436 // Type conflicts with imported type
+            Application.Run(new MainForm());
+#pragma warning restore CS0436 // Type conflicts with imported type
         }
     }
 }

@@ -6,7 +6,7 @@ using GenshinScanner.Input;
 
 namespace GenshinScanner
 {
-    public partial class ScannerForm : Form
+    public partial class MainForm : Form
     {
         // Process
         private static Thread mainThread;
@@ -14,29 +14,28 @@ namespace GenshinScanner
         public static KeyboardHook keyHook = new KeyboardHook();
         // Output
         private static string filePath = "";
-        
-        public ScannerForm()
+
+        public MainForm()
         {
             InitializeComponent();
-            
+
             this.Text = Resources.AppTitle + ' ' + Resources.AppVersion;
             this.comboLanguage.SelectedIndex = this.comboDelay.SelectedIndex = 0;
-            
             // Default output file path
-            textFilePath.Text = "";
+            textOutputFileLocation.Text = "";
             filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (filePath == "")
-                textFilePath.Text = "Select Folder";
+                textOutputFileLocation.Text = "Select Folder";
             else
             {
                 filePath += "\\GenshinScanData";
-                textFilePath.Text = filePath;
+                textOutputFileLocation.Text = filePath;
             }
         }
 
-        private void panelCharacter_Resize(object sender, EventArgs e)
+        private void panelCharacterDetails_Resize(object sender, EventArgs e)
         {
-            labelCharDesc.MaximumSize = new Size(labelCharWidth.Size.Width, 0);
+            labelCharacterDescription.MaximumSize = new Size(panelCharacterDetails.Width - (panelCharacterDetails.Padding.Left + panelCharacterDetails.Padding.Right), 0);
         }
     }
 }

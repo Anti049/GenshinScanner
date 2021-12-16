@@ -38,14 +38,22 @@ namespace GenshinScanner.Input
                 if (m.Msg != WM_HOTKEY) return;
                 // get the keys.
                 Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+#pragma warning disable CS0436 // Type conflicts with imported type
+#pragma warning disable CS0436 // Type conflicts with imported type
                 ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
+#pragma warning restore CS0436 // Type conflicts with imported type
+#pragma warning restore CS0436 // Type conflicts with imported type
 
                 // invoke the event to notify the parent.
                 if (KeyPressed != null)
+#pragma warning disable CS0436 // Type conflicts with imported type
                     KeyPressed(this, new KeyPressedEventArgs(modifier, key));
+#pragma warning restore CS0436 // Type conflicts with imported type
             }
 
+#pragma warning disable CS0436 // Type conflicts with imported type
             public event EventHandler<KeyPressedEventArgs> KeyPressed;
+#pragma warning restore CS0436 // Type conflicts with imported type
 
             #region IDisposable Members
 
@@ -63,7 +71,9 @@ namespace GenshinScanner.Input
         public KeyboardHook()
         {
             // register the event of the inner native window.
+#pragma warning disable CS0436 // Type conflicts with imported type
             _window.KeyPressed += delegate (object sender, KeyPressedEventArgs args)
+#pragma warning restore CS0436 // Type conflicts with imported type
             {
                 KeyPressed?.Invoke(this, args);
             };
@@ -88,7 +98,9 @@ namespace GenshinScanner.Input
         /// <summary>
         /// A hot key has been pressed.
         /// </summary>
+#pragma warning disable CS0436 // Type conflicts with imported type
         public event EventHandler<KeyPressedEventArgs> KeyPressed;
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         #region IDisposable Members
 
@@ -112,13 +124,17 @@ namespace GenshinScanner.Input
     /// </summary>
     public class KeyPressedEventArgs : EventArgs
     {
+#pragma warning disable CS0436 // Type conflicts with imported type
         internal KeyPressedEventArgs(ModifierKeys modifier, Keys key)
+#pragma warning restore CS0436 // Type conflicts with imported type
         {
             Modifier = modifier;
             Key = key;
         }
 
+#pragma warning disable CS0436 // Type conflicts with imported type
         public ModifierKeys Modifier { get; }
+#pragma warning restore CS0436 // Type conflicts with imported type
 
         public Keys Key { get; }
     }
