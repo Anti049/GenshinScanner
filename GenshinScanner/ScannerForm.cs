@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using GenshinScanner.Input;
@@ -31,6 +32,11 @@ namespace GenshinScanner
                 filePath += "\\GenshinScanData";
                 textFilePath.Text = filePath;
             }
+        }
+
+        private void panelCharacter_Resize(object sender, EventArgs e)
+        {
+            labelCharDesc.MaximumSize = new Size(labelCharWidth.Size.Width, 0);
         }
     }
 }
