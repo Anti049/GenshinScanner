@@ -12,6 +12,7 @@
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
+        <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -67,8 +68,14 @@
         <Compile Include="Data\Artifact.cs" />
         <Compile Include="Data\Character.cs" />
         <Compile Include="Data\GenshinData.cs" />
+        <Compile Include="Data\InventoryData.cs" />
         <Compile Include="Data\Weapon.cs" />
         <Compile Include="Input\KeyboardHook.cs" />
+        <Compile Include="Resources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
         <Compile Include="ScannerForm.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -77,8 +84,14 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <EmbeddedResource Include="Components\SelectList.en.resx">
+          <DependentUpon>SelectList.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="Components\SelectList.resx">
           <DependentUpon>SelectList.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Properties\Resources.en.resx">
+          <DependentUpon>Resources.resx</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +102,16 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <EmbeddedResource Include="Resources.en.resx">
+          <DependentUpon>Resources.resx</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Resources.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Include="ScannerForm.en.resx">
+          <DependentUpon>ScannerForm.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="ScannerForm.resx">
           <DependentUpon>ScannerForm.cs</DependentUpon>
         </EmbeddedResource>
@@ -105,6 +128,15 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Assets\Icon.ico" />
+      <Content Include="Assets\Icon.png" />
+      <Content Include="Assets\Title_Black.png" />
+      <Content Include="Assets\Title_Blue.png" />
+      <Content Include="Resources\Icon.png" />
+      <Content Include="Resources\Title_Black.png" />
+      <Content Include="Resources\Title_Blue.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\Tesseract.4.1.1\build\Tesseract.targets" Condition="Exists('..\packages\Tesseract.4.1.1\build\Tesseract.targets')" />
